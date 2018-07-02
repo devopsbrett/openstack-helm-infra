@@ -59,8 +59,8 @@ function ansible_install {
   # https://github.com/python-cmd2/cmd2/issues/421
   sudo -H -E pip install --no-cache-dir --upgrade "cmd2<=0.8.7"
   sudo -H -E pip install --no-cache-dir --upgrade pyopenssl
+  sudo -H -E pip install --no-cache-dir --upgrade "ansible==2.5.5"
   sudo -H -E pip install --no-cache-dir --upgrade \
-    ansible \
     ara \
     yq
 }

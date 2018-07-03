@@ -37,6 +37,9 @@ ENV CNI_VERSION ${CNI_VERSION}
 ARG HELM_VERSION="v2.9.1"
 ENV HELM_VERSION ${HELM_VERSION}
 
+ARG ANSIBLE_VERSION="2.5.5"
+ENV ANSIBLE_VERSION ${ANSIBLE_VERSION}
+
 ARG CHARTS="calico,flannel,tiller,kube-dns,kubernetes-keystone-webhook"
 ENV CHARTS ${CHARTS}
 
@@ -70,7 +73,7 @@ RUN set -ex ;\
     hash -r ;\
     pip --no-cache-dir install setuptools ;\
     pip --no-cache-dir install kubernetes ;\
-    pip --no-cache-dir install ansible ;\
+    pip --no-cache-dir install "ansible==${ANSIBLE_VERSION}" ;\
     for BINARY in kubectl kubeadm; do \
       curl -sSL -o /usr/bin/${BINARY} \
         https://storage.googleapis.com/kubernetes-release/release/${KUBE_VERSION}/bin/linux/amd64/${BINARY} ;\
